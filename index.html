@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <ul id="toDoItems" style="font-size:30px"></ul>
     <form method="post" onsubmit="return addToDoItem()"> 
         <input id="toDoItem" type="text" placeholder="New to-do item">
             <input type="submit" value="Add">
@@ -18,8 +19,18 @@
             var toDoItem = document.getElementById('toDoItem').value
             toDoItems.push(toDoItem)
 
-            console.log(toDoItems)
+            updateToDoItems()
             return false
+        }
+
+        function updateToDoItems () {
+            document.getElementById('toDoItems').innerHTML = ''
+            for (toDoIndex in toDoItems) {
+                var toDoItem = toDoItems[toDoIndex]
+                document.getElementById('toDoItems').innerHTML += '<li>' + toDoItem + '<li>'
+            }
+
+            return
         }
    </script>
 </body>
